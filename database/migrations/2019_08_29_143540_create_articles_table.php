@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+/**
+ * 記事本体のマイグレーション
+ */
 class CreateArticlesTable extends Migration
 {
     /**
@@ -16,6 +18,7 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
+            $table->string('title');
             $table->text('message');
             $table->timestamps();
         });

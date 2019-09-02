@@ -20,6 +20,9 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//タイムライン
+Route::get('/', 'TimeLineController@index');
+
 Route::middleware('verified')->group(function() {
 
     // 本登録ユーザーだけ表示できるページ
