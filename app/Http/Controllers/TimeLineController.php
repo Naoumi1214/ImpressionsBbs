@@ -14,4 +14,10 @@ class TimeLineController extends Controller
         # code...
         return view('timeLine.index');
     }
+
+    public function inArticle(Request $request)
+    {
+        # code...
+
+    }
 }
