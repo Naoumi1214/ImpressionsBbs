@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //タイムライン
 Route::get('/', 'TimeLineController@index');
+Route::post('/inArticle', 'TimeLineController@inArticle');
 
 Route::middleware('verified')->group(function() {
 

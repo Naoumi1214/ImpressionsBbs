@@ -7,13 +7,15 @@
             <div class="timeLine">
                 <div class="timeLineHeder">
                     @if (Auth::check())
-                    <form action="" method="post">
+                    {{-- 感想を書くフォーム --}}
+                    <form action="/inArticle" method="post">
+                        @csrf
                         @if ($errors->has('title'))
-                        <p>タイトルを入力してください。</p>
+                        <p>*タイトルを入力してください。</p>
                         @endif
                         <p>タイトル:<input type="text" name="title" id="intitle"></p>
                         @if ($errors->has('message'))
-                        <p>タイトルを入力してください。</p>
+                        <p>*感想を入力してください。</p>
                         @endif
                         <p style="margin: 0;">感想</p>
                         <textarea name="message" id="inmessage" cols="30" rows=""></textarea>
