@@ -17,8 +17,8 @@ class Articles extends Model
 
     //バリデーションルール
     public static $rules = [
-        'title' => 'required',
-        'message' => 'required',
+        'title' => 'required|',
+        'message' => 'required|',
     ];
 
     //バリデーションのエラーメッセージ

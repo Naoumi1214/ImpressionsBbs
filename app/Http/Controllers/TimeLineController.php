@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Articles;
-use Faker\Provider\en_IN\Person;
 use Illuminate\Http\Request;
+use Validator;
+
 /**
  * タイムライン関係のController
  */
@@ -20,12 +21,21 @@ class TimeLineController extends Controller
     public function inArticle(Request $request)
     {
         # code...
-        $validator = $this->validate($request,Articles::$rules,Articles::$messages);
+        //↓Ajaxの送信内容の確認テスト
+        return response()->json(['title' => $request->title, 'message' => $request->message]);
+
+        $validator = Validator::make(
+            $request->all(),
+            Articles::$rules,
+            Articles::$messages
+        );
+
         if ($validator->fails()) {
             return redirect('/')
-                  ->withErrors($validator)
-                  ->withInput();
-          }
-        return view('timeLine.index');
+                ->withErrors($validator)
+                ->withInput();
+        }
+        return response()->json(['seiko' => '成功']);
+        //return view('timeLine.index');
     }
 }

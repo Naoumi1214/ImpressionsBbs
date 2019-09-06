@@ -19,7 +19,7 @@
                         @endif
                         <p style="margin: 0;">感想</p>
                         <textarea name="message" id="inmessage" cols="30" rows=""></textarea>
-                        <p> <input type="submit" value="投稿"></p>
+                        <p> <input type="button" value="投稿" id="insubmit"></p>
                     </form>
                     @else
                     <h1>ログインして、感想を書こう！！</h1>
@@ -28,7 +28,9 @@
                 </div>
                 <div class="timeLine">
                     <h1>感想のタイムライン</h1>
-
+                    @isset($as)
+                    <p>{{$as}}</p>
+                    @endisset
                 </div>
             </div>
         </div>
