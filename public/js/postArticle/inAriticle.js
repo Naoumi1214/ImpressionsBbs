@@ -46,14 +46,19 @@ document.addEventListener("DOMContentLoaded", function () {
 					} else {
 						//バリデーションエラーが発生しなかった場合
 						console.log("OK");
-
+						//既にエラーメッセージを表示が表示されていた場合
+						if (document.getElementById("titleError").textContent !== "") {
+							document.getElementById("titleError").textContent = "";
+						}
+						if (document.getElementById("messageError").textContent !== "") {
+							document.getElementById("messageError").textContent = "";
+						}
 					}
 
 
 				} else {
 					//通信がが失敗した場合
 					console.log('did not');
-
 				}
 			} else {
 				//通信が関する前
