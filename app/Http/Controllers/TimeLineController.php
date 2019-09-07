@@ -35,7 +35,14 @@ class TimeLineController extends Controller
             return response()->json($validator->errors());
         }
 
-        return response()->json(['title' => $request->title, 'message' => $request->message]);
+        //感想記事を新規保存
+        $article = new Articles();
+        $form = $request->all();
+        unset($form['_token']);
+        $article->fill($form)->save();
+
+        return response()->json($form);
+        //var_dump($form);
         //return view('timeLine.index');
     }
 }

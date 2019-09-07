@@ -10,6 +10,7 @@
                     {{-- 感想を書くフォーム --}}
                     <form action="/inArticle" method="post">
                         @csrf
+                        <input type="hidden" name="user_id" id="user_id" value="{{Auth::id()}}">
                         <p id="titleError"></p>
                         <p>タイトル:<input type="text" name="title" id="intitle"></p>
                         <p id="messageError"></p>

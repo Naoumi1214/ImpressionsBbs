@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		var xhr = new XMLHttpRequest();
 
 		//感想記事のフォームの内容を取得
+		var user_id = document.getElementById('user_id').value;
 		var intitle = document.getElementById('intitle').value;
 		console.log("title" + intitle);
 		var inmessag = document.getElementById('inmessage').value;
@@ -73,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			'application/x-www-form-urlencoded;charset=UTF-8');
 		var token = document.getElementsByName('csrf-token').item(0).content;
 		xhr.setRequestHeader('X-CSRF-Token', token);
-		xhr.send('title=' + intitle + '&message=' + inmessag);
+		xhr.send('title=' + intitle + '&message=' + inmessag+ '&user_id=' + user_id);
 
 	}
 
