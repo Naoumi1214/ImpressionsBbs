@@ -23,7 +23,7 @@ class Articles extends Model
 
     //バリデーションのエラーメッセージ
     public static $messages = [
-        'title.required' => 'タイトルを入力してください。',
-        'message.required' => '感想を入力してください。',
+        'title.required' => '*タイトルを入力してください。',
+        'message.required' => '*感想を入力してください。',
     ];
 }

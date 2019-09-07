@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Articles;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Validator;
 
 /**
@@ -22,7 +23,6 @@ class TimeLineController extends Controller
     {
         # code...
         //↓Ajaxの送信内容の確認テスト
-        return response()->json(['title' => $request->title, 'message' => $request->message]);
 
         $validator = Validator::make(
             $request->all(),
@@ -31,11 +31,11 @@ class TimeLineController extends Controller
         );
 
         if ($validator->fails()) {
-            return redirect('/')
-                ->withErrors($validator)
-                ->withInput();
+            //バリデーションエラー時にJsonでエラーメッセージを返す
+            return response()->json($validator->errors());
         }
-        return response()->json(['seiko' => '成功']);
+
+        return response()->json(['title' => $request->title, 'message' => $request->message]);
         //return view('timeLine.index');
     }
 }

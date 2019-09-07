@@ -17,7 +17,39 @@ document.addEventListener("DOMContentLoaded", function () {
 				if (xhr.status === 200) {
 					//通信が成功した場合
 					console.log('did');
-					console.log(JSON.parse(xhr.responseText));
+					var json = JSON.parse(xhr.responseText);
+					console.log(json);
+					console.log(json.title);
+
+					//↓タイトル
+					var title = json.title;
+					//↓メッセージ
+					var message = json.message;
+
+					//Jsonに配列があったら、バリデーションエラー
+					if (Array.isArray(title) || Array.isArray(message)) {
+						console.log("error");
+						//↓エラーメッセージが入っている配列の番号
+						var errorArrayNumber = 0;
+						//↓エラーメッセージの背景色
+						var errorValidationMeaageColr = "Red";
+						//タイトルエラーメッセージ
+						if (Array.isArray(title)) {
+							document.getElementById("titleError").textContent = title[errorArrayNumber];
+							document.getElementById("titleError").backgroundColr = errorValidationMeaageColr;
+						}
+						//メッセージエラーメッセージ
+						if (Array.isArray(message)) {
+							document.getElementById("messageError").textContent = message[errorArrayNumber];
+							document.getElementById("messageError").backgroundColr = errorValidationMeaageColr;
+						}
+					} else {
+						//バリデーションエラーが発生しなかった場合
+						console.log("OK");
+
+					}
+
+
 				} else {
 					//通信がが失敗した場合
 					console.log('did not');
