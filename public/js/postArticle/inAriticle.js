@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 					//↓タイトル
 					var title = json.title;
-					//↓メッセージ
+					//↓感想記事
 					var message = json.message;
 
 					//Jsonに配列があったら、バリデーションエラー
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 							document.getElementById("titleError").textContent = title[errorArrayNumber];
 							document.getElementById("titleError").backgroundColr = errorValidationMeaageColr;
 						}
-						//メッセージエラーメッセージ
+						//感想記事エラーメッセージ
 						if (Array.isArray(message)) {
 							document.getElementById("messageError").textContent = message[errorArrayNumber];
 							document.getElementById("messageError").backgroundColr = errorValidationMeaageColr;
@@ -47,10 +47,11 @@ document.addEventListener("DOMContentLoaded", function () {
 					} else {
 						//バリデーションエラーが発生しなかった場合
 						console.log("OK");
-						//既にエラーメッセージを表示が表示されていた場合
+						//既にタイトルエラーメッセージを表示が表示されていた場合
 						if (document.getElementById("titleError").textContent !== "") {
 							document.getElementById("titleError").textContent = "";
 						}
+						//既に感想記事エラーメッセージを表示が表示されていた場合
 						if (document.getElementById("messageError").textContent !== "") {
 							document.getElementById("messageError").textContent = "";
 						}
