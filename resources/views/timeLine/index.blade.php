@@ -25,10 +25,14 @@
                 </div>
                 <div class="timeLine">
                     <h1>感想のタイムライン</h1>
-                    @isset($as)
-                    <p>{{$as}}</p>
-                    @endisset
+                    @foreach ($articletItems as $item)
+                    <article>
+                        <h3>タイトル：{{$item->title}}</h3>
+                        <p>{{$item->message}}</p>
+                    </article>
+                    @endforeach
                 </div>
+                {{$articletItems->appends(['sort' => $sortTarget])->links()}}
             </div>
         </div>
     </div>

@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						if (document.getElementById("messageError").textContent !== "") {
 							document.getElementById("messageError").textContent = "";
 						}
+
 					}
 
 

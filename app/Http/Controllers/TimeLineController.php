@@ -16,7 +16,13 @@ class TimeLineController extends Controller
     public function index(Request $request)
     {
         # code...
-        return view('timeLine.index');
+        $sortTarget = 'id';
+        //感想記事を5個ずつidの降順に取り出す
+        $articletItems = Articles::orderBy($sortTarget, 'DESC')->paginate(5);
+        return view(
+            'timeLine.index',
+            ['articletItems' => $articletItems, 'sortTarget' => $sortTarget]
+        );
     }
 
     public function inArticle(Request $request)
