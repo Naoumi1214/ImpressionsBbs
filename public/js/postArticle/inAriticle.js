@@ -59,9 +59,9 @@ document.addEventListener("DOMContentLoaded", function () {
 						//感想記事のarticle
 						var article = document.createElement("article");
 						//感想記事のタイトル
-						var title_h2 = document.createElement("h2");
-						title_h2.textContent = "タイトル：" + title;
-						article.appendChild(title_h2);
+						var title_h3 = document.createElement("h3");
+						title_h3.textContent = "タイトル：" + title;
+						article.appendChild(title_h3);
 						//感想記事の本文
 						var message_p = document.createElement("p");
 						message_p.textContent = message;
@@ -69,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 						//class="timeLine"に感想記事を組み込む
 						var timeLine = document.getElementById("timeLine");
-						console.log(timeLine);
 						timeLine.insertBefore(article, timeLine.firstChild);
 
 					}
