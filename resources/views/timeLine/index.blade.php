@@ -25,14 +25,14 @@
                 </div>
                 <div class="timeLine">
                     <h1>感想のタイムライン</h1>
-                    @foreach ($articletItems as $item)
+                    @foreach ($articleItems as $item)
                     <article>
                         <h3>タイトル：{{$item->title}}</h3>
                         <p>{{$item->message}}</p>
                     </article>
                     @endforeach
                 </div>
-                {{$articletItems->appends(['sort' => $sortTarget])->links()}}
+                {{$articleItems->appends(['sort' => $sortTarget])->links()}}
             </div>
         </div>
     </div>

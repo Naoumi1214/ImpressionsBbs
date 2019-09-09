@@ -18,10 +18,10 @@ class TimeLineController extends Controller
         # code...
         $sortTarget = 'id';
         //感想記事を5個ずつidの降順に取り出す
-        $articletItems = Articles::orderBy($sortTarget, 'DESC')->paginate(5);
+        $articleItems = Articles::orderBy($sortTarget, 'DESC')->paginate(5);
         return view(
             'timeLine.index',
-            ['articletItems' => $articletItems, 'sortTarget' => $sortTarget]
+            ['articleItems' => $articleItems, 'sortTarget' => $sortTarget]
         );
     }
 
