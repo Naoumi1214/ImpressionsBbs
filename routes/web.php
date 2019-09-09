@@ -24,13 +24,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'TimeLineController@index');
 Route::post('/inArticle', 'TimeLineController@inArticle');
 
-Route::middleware('verified')->group(function() {
+//マイタイムライン
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/mytimeline', 'MyTimeLineController@index');
+});
+
+Route::middleware('verified')->group(function () {
 
     // 本登録ユーザーだけ表示できるページ
-    Route::get('verified',  function(){
+    Route::get('verified',  function () {
 
         return '本登録が完了してます！';
-
     });
-
 });
