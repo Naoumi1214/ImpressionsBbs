@@ -56,6 +56,22 @@ document.addEventListener("DOMContentLoaded", function () {
 							document.getElementById("messageError").textContent = "";
 						}
 
+						//感想記事のarticle
+						var article = document.createElement("article");
+						//感想記事のタイトル
+						var title_h2 = document.createElement("h2");
+						title_h2.textContent = "タイトル：" + title;
+						article.appendChild(title_h2);
+						//感想記事の本文
+						var message_p = document.createElement("p");
+						message_p.textContent = message;
+						article.appendChild(message_p);
+
+						//class="timeLine"に感想記事を組み込む
+						var timeLine = document.getElementById("timeLine");
+						console.log(timeLine);
+						timeLine.insertBefore(article, timeLine.firstChild);
+
 					}
 
 
@@ -76,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			'application/x-www-form-urlencoded;charset=UTF-8');
 		var token = document.getElementsByName('csrf-token').item(0).content;
 		xhr.setRequestHeader('X-CSRF-Token', token);
-		xhr.send('title=' + intitle + '&message=' + inmessag+ '&user_id=' + user_id);
+		xhr.send('title=' + intitle + '&message=' + inmessag + '&user_id=' + user_id);
 
 	}
 

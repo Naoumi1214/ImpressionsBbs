@@ -23,8 +23,8 @@
                     <p>(<a href="/login">ログイン</a>|<a href="/regster">アカウント登録</a>)</p>
                     @endif
                 </div>
-                <div class="timeLine">
-                    <h1>感想のタイムライン</h1>
+                <h1>感想のタイムライン</h1>
+                <div id="timeLine">
                     @foreach ($articleItems as $item)
                     <article>
                         <h3>タイトル：{{$item->title}}</h3>
