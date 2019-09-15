@@ -21,9 +21,15 @@
                 <h1>感想のタイムライン</h1>
                 <div id="timeLine">
                     @foreach ($articleItems as $item)
-                    <article>
+                    <article id="{{$item->id}}">
                         <h3>タイトル：{{$item->title}}</h3>
                         <p>{{$item->message}}</p>
+                        <form action="/deleteMyArticle" method="post">
+                            @csrf
+                            <input type="hidden" name="user_id" id="user_id" value="{{Auth::id()}}">
+                            <input type="hidden" name="article_id" id="article_id" value="{{$item->id}}">
+                            <p><input type="button" value="削除する" class="deleteMyArticle"></p>
+                        </form>
                     </article>
                     @endforeach
                 </div>
@@ -33,5 +39,6 @@
     </div>
     @endsection
     @section('scripts')
+    <script src="{{ asset('js/postArticle/deleteAritcle.js') }}"></script>
     <script src="{{ asset('js/postArticle/inAriticle.js') }}"></script>
     @endsection

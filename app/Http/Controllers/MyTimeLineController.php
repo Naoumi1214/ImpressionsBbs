@@ -19,7 +19,7 @@ class MyTimeLineController extends Controller
 
         $sortTarget = 'id';
         //ユーザーの感想記事を5個ずつidの降順に取り出す
-        $articleItems =  Articles::find($user_id)->getUserArticle($user_id,$sortTarget);//ユーザーの記事を取得
+        $articleItems =  Articles::find($user_id)->getUserArticle($user_id, $sortTarget); //ユーザーの記事を取得
         return view(
             'timeLine.myTimeLine',
             [
@@ -27,5 +27,13 @@ class MyTimeLineController extends Controller
                 'user' => $user
             ]
         );
+    }
+    /**
+     *  ユーザーの感想記事削除
+     */
+    public function deleteMyArticle(Request $request)
+    {
+        # code...
+
     }
 }

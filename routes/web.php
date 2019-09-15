@@ -28,6 +28,8 @@ Route::post('/inArticle', 'TimeLineController@inArticle');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/mytimeline', 'MyTimeLineController@index');
 });
+Route::post('/deleteMyArticle', 'MyTimeLineController@deleteMyArticle');
+
 
 Route::middleware('verified')->group(function () {
 
