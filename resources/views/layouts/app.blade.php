@@ -62,10 +62,12 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    <a class="dropdown-item" href="{{ url('/mytimeline') }}">
+                                        {{ __('マイ記事') }}
+                                    </a>
                                 </div>
                             </li>
                         @endguest

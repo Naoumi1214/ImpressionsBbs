@@ -6,6 +6,7 @@
         <div class="col-md-8">
             <div class="timeLine">
                 <div class="timeLineHeder">
+                    <h1>マイユーザーページ({{$user->name}}様)</h1>
                     <form action="/inArticle" method="post">
                         @csrf
                         <input type="hidden" name="user_id" id="user_id" value="{{Auth::id()}}">

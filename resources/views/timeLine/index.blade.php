@@ -20,7 +20,7 @@
                     </form>
                     @else
                     <h1>ログインして、感想を書こう！！</h1>
-                    <p>(<a href="/login">ログイン</a>|<a href="/regster">アカウント登録</a>)</p>
+                    <p>(<a href="/login">ログイン</a>|<a href="/register">アカウント登録</a>)</p>
                     @endif
                 </div>
                 <h1>感想のタイムライン</h1>
