@@ -17,11 +17,18 @@ document.addEventListener("DOMContentLoaded", function () {
 				if (xhr.status === 200) {
 					//通信が成功した場合
 					console.log('did');
+					var json = Boolean(JSON.parse(xhr.responseText));
+					console.log(json);
+					if (json) {
+						//削除対象のDOMを削除する
+						var timeLine = document.getElementById('timeLine');
+						var deleteTatgetAritcle = document.getElementById(article_id);
+						timeLine.removeChild(deleteTatgetAritcle);
+					} else {
 
-					//削除対象のDOMを削除する
-					var timeLine = document.getElementById('timeLine');
-					var deleteTatgetAritcle = document.getElementById(article_id);
-					timeLine.removeChild(deleteTatgetAritcle);
+					}
+
+
 				} else {
 					//通信がが失敗した場合
 					console.log('did not');

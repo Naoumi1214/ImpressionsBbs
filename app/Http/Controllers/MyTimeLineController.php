@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Articles;
 use Illuminate\Http\Request;
-use Validator;
 use Illuminate\Support\Facades\Auth;
 
 class MyTimeLineController extends Controller
@@ -28,12 +27,17 @@ class MyTimeLineController extends Controller
             ]
         );
     }
+
     /**
      *  ユーザーの感想記事削除
      */
     public function deleteMyArticle(Request $request)
     {
         # code...
-
+        $user_id = intval($request->user_id);
+        $deleteArticle_id = intval($request->article_id);
+        $result = Articles::find($user_id)->deleteArticle($deleteArticle_id); //対象のユーザーの記事を削除
+        //return $result;
+        return response()->json($result);
     }
 }

@@ -2,9 +2,7 @@
 
 namespace App;
 
-use Dotenv\Validator;
 use Illuminate\Database\Eloquent\Model;
-use phpDocumentor\Reflection\Types\String_;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -33,12 +31,31 @@ class Articles extends Model
      * ユーザーの記事を取得する
      *
      */
-    public function getUserArticle(int $user_id,string $sortTarget):object
+    public function getUserArticle(int $user_id, string $sortTarget): object
     {
         # code...
         $article = DB::table($this->table)
-            ->where('user_id', $user_id)->orderBy($sortTarget, 'DESC')->paginate(5);
+            ->where('user_id', $user_id)
+            ->orderBy($sortTarget, 'DESC')
+            ->paginate(5);
 
         return $article;
+    }
+
+    /**
+     * 指定の記事を削除する
+     */
+    public function deleteArticle(int $deleteArticle_id): bool
+    {
+        # code...
+        try {
+            //code...
+            DB::delete('DELETE FROM articles
+        WHERE id = ?', [$deleteArticle_id]);
+            return true;
+        } catch (\Throwable $th) {
+            //throw $th
+            return false;
+        }
     }
 }
