@@ -30,6 +30,10 @@ Route::group(['middleware' => 'auth'], function () {
 });
 Route::post('/deleteMyArticle', 'MyTimeLineController@deleteMyArticle');
 
+//ユーザーの退会
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/deleteUser', 'DeleteUserController@deleteUser');
+});
 
 Route::middleware('verified')->group(function () {
 

@@ -68,6 +68,9 @@
                                     <a class="dropdown-item" href="{{ url('/mytimeline') }}">
                                         {{ __('マイ記事') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ url('/deleteUser') }}">
+                                        {{ __('退会') }}
+                                    </a>
                                 </div>
                             </li>
                         @endguest

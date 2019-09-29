@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
+
 
 class User extends Authenticatable
 {
@@ -41,5 +43,11 @@ class User extends Authenticatable
     {
         # code...
         return $this->hasMany('App\Ariticles');
+    }
+
+    public function userDelete():void
+    {
+        # code...
+        DB::delete('DELETE FROM users WHERE id = ?', [$this->id]);
     }
 }
