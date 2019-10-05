@@ -11,4 +11,5 @@
 - バックエンド言語:PHP
 - バックエンドフレームワーク:Laravel
 - フロントエンド言語:JavaScript(フルスクラッチ)
+- データーベース:MariaDB
 - サーバーOS:CentOS
