@@ -27,7 +27,6 @@ class TimeLineController extends Controller
     public function inArticle(Request $request)
     {
         # code...
-        //↓Ajaxの送信内容の確認テスト
 
         $validator = Validator::make(
             $request->all(),

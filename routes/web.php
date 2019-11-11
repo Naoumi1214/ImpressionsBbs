@@ -22,13 +22,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //タイムライン
 Route::get('/', 'TimeLineController@index');
-Route::post('/inArticle', 'TimeLineController@inArticle');
+
 
 //マイタイムライン
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/mytimeline', 'MyTimeLineController@index');
 });
+Route::post('/inArticle', 'TimeLineController@inArticle');
 Route::post('/deleteMyArticle', 'MyTimeLineController@deleteMyArticle');
+Route::post('/updateMyArticle', 'MyTimeLineController@updateMyArticle');
 
 //ユーザーの退会
 Route::group(['middleware' => 'auth'], function () {

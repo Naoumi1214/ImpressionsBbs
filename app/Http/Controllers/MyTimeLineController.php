@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Articles;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,11 @@ class MyTimeLineController extends Controller
 
         $sortTarget = 'id';
         //ユーザーの感想記事を5個ずつidの降順に取り出す
-        $articleItems =  Articles::find($user_id)->getUserArticle($user_id, $sortTarget); //ユーザーの記事を取得
+        $articleItems = DB::table('articles')
+            ->where('user_id', $user_id)
+            ->orderBy($sortTarget, 'DESC')
+            ->paginate(5);
+
         return view(
             'timeLine.myTimeLine',
             [
@@ -36,8 +41,22 @@ class MyTimeLineController extends Controller
         # code...
         $user_id = intval($request->user_id);
         $deleteArticle_id = intval($request->article_id);
-        $result = Articles::find($user_id)->deleteArticle($deleteArticle_id); //対象のユーザーの記事を削除
+        //対象のユーザーの記事を削除
+        $result = Articles::deleteArticle($deleteArticle_id);
         //return $result;
         return response()->json($result);
+    }
+
+    /**
+     * ユーザーの感想記事本文更新
+     */
+    public function updateMyArticle(Request $request)
+    {
+        # code...
+        $updateArticle_id = intval($request->updateArticle_id);
+        $updateMessage = strval($request->updateMessage);
+        //対象のユーザーの記事の本文を更新
+        Articles::updateArticle($updateArticle_id, $updateMessage);
+        return redirect('/mytimeline');
     }
 }

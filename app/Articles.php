@@ -27,25 +27,12 @@ class Articles extends Model
         'message.required' => '*感想を入力してください。',
     ];
 
-    /**
-     * ユーザーの記事を取得する
-     *
-     */
-    public function getUserArticle(int $user_id, string $sortTarget): object
-    {
-        # code...
-        $article = DB::table($this->table)
-            ->where('user_id', $user_id)
-            ->orderBy($sortTarget, 'DESC')
-            ->paginate(5);
 
-        return $article;
-    }
 
     /**
      * 指定の記事を削除する
      */
-    public function deleteArticle(int $deleteArticle_id): bool
+    public static function deleteArticle(int $deleteArticle_id): bool
     {
         # code...
         try {
@@ -57,5 +44,15 @@ class Articles extends Model
             //throw $th
             return false;
         }
+    }
+
+    public static function updateArticle(int $updateArticle_id, string $updateMessage)
+    {
+        # code...
+        DB::update(
+            'UPDATE articles SET message = ?
+            WHERE id  = ?',
+            [$updateMessage, $updateArticle_id]
+        );
     }
 }

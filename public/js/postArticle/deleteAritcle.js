@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	//削除ボタンを押した場合の処理
-	document.getElementById('timeLine').addEventListener('click', function (e) {
+	document.getElementById('deleteMyArticleButton').addEventListener('click', function (e) {
 		deleteMyArticleAjax();
 	}, false);
 
